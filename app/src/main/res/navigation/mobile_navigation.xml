@@ -12,32 +12,38 @@
         tools:layout="@layout/fragment_login">
         <action
             android:id="@+id/action_loginFragment_to_nav_home"
-            app:destination="@id/nav_home"
+            app:destination="@id/nav_data_insights"
             app:popUpTo="@id/loginFragment"
             app:popUpToInclusive="true" />
     </fragment>
 
     <fragment
-        android:id="@+id/nav_home"
+        android:id="@+id/nav_data_insights"
         android:name="com.example.proxiesr_rfr.ui.home.HomeFragment"
-        android:label="@string/menu_home"
+        android:label="@string/menu_data_insight"
         tools:layout="@layout/fragment_home">
         <action
             android:id="@+id/action_nav_home_to_loginFragment"
             app:destination="@id/loginFragment"
-            app:popUpTo="@id/nav_home"
+            app:popUpTo="@id/nav_data_insights"
             app:popUpToInclusive="true" />
     </fragment>
 
     <fragment
-        android:id="@+id/nav_gallery"
+        android:id="@+id/nav_tree_species"
         android:name="com.example.proxiesr_rfr.ui.gallery.GalleryFragment"
-        android:label="@string/menu_gallery"
+        android:label="@string/menu_tree_species"
         tools:layout="@layout/fragment_gallery" />
 
     <fragment
-        android:id="@+id/nav_slideshow"
+        android:id="@+id/nav_import_data"
         android:name="com.example.proxiesr_rfr.ui.slideshow.SlideshowFragment"
-        android:label="@string/menu_slideshow"
+        android:label="@string/menu_import_data"
         tools:layout="@layout/fragment_slideshow" />
+
+    <fragment
+        android:id="@+id/nav_notifications"
+        android:name="com.example.proxiesr_rfr.ui.notif.NotificationFragment"
+        android:label="@string/menu_notification"
+        tools:layout="@layout/fragment_notification" />
 </navigation>
