@@ -7,11 +7,11 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
-import com.example.proxiesr_rfr.databinding.FragmentTreesBinding
+import com.example.proxiesr_rfr.databinding.FragmentDatainsightBinding
 
 class DataInsightFragment : Fragment() {
 
-    private var _binding: FragmentTreesBinding? = null
+    private var _binding: FragmentDatainsightBinding? = null
 
     // This property is only valid between onCreateView and
     // onDestroyView.
@@ -25,10 +25,10 @@ class DataInsightFragment : Fragment() {
         val dataInsightModel =
             ViewModelProvider(this).get(DataInsightModel::class.java)
 
-        _binding = FragmentTreesBinding.inflate(inflater, container, false)
+        _binding = FragmentDatainsightBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
-        val textView: TextView = binding.textHome
+        val textView: TextView = binding.textGallery
         dataInsightModel.text.observe(viewLifecycleOwner) {
             textView.text = it
         }
