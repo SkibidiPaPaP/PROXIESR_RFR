@@ -56,7 +56,7 @@ class MainActivity : AppCompatActivity() {
         // menu should be considered as top level destinations.
         appBarConfiguration = AppBarConfiguration(
             setOf(
-                R.id.nav_data_insights, R.id.nav_tree_species, R.id.nav_import_data
+                R.id.nav_data_insights, R.id.nav_tree_species, R.id.nav_import_data, R.id.nav_notifications
             ), drawerLayout
         )
         setupActionBarWithNavController(navController, appBarConfiguration)
@@ -64,7 +64,13 @@ class MainActivity : AppCompatActivity() {
 
         // Handle login menu item click
         navView.menu.findItem(R.id.nav_login).setOnMenuItemClickListener {
-            navController.navigate(R.id.action_nav_home_to_loginFragment)
+            when (navController.currentDestination?.id) {
+                R.id.nav_data_insights -> navController.navigate(R.id.action_nav_home_to_loginFragment)
+                R.id.nav_tree_species -> navController.navigate(R.id.action_nav_tree_species_to_loginFragment)
+                R.id.nav_import_data -> navController.navigate(R.id.action_nav_import_data_to_loginFragment)
+                R.id.nav_notifications -> navController.navigate(R.id.action_nav_notifications_to_loginFragment)
+                else -> navController.navigate(R.id.action_nav_home_to_loginFragment)
+            }
             drawerLayout.closeDrawers()
             true
         }

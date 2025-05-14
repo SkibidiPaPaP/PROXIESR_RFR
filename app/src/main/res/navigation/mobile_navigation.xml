@@ -21,7 +21,7 @@
         android:id="@+id/nav_data_insights"
         android:name="com.example.proxiesr_rfr.ui.trees.TreeSpeciesFragment"
         android:label="@string/menu_data_insight"
-        tools:layout="@layout/fragment_home">
+        tools:layout="@layout/fragment_trees">
         <action
             android:id="@+id/action_nav_home_to_loginFragment"
             app:destination="@id/loginFragment"
@@ -33,17 +33,35 @@
         android:id="@+id/nav_tree_species"
         android:name="com.example.proxiesr_rfr.ui.dataInsight.DataInsightFragment"
         android:label="@string/menu_tree_species"
-        tools:layout="@layout/fragment_gallery" />
+        tools:layout="@layout/fragment_gallery">
+        <action
+            android:id="@+id/action_nav_tree_species_to_loginFragment"
+            app:destination="@id/loginFragment"
+            app:popUpTo="@id/nav_tree_species"
+            app:popUpToInclusive="true" />
+    </fragment>
 
     <fragment
         android:id="@+id/nav_import_data"
         android:name="com.example.proxiesr_rfr.ui.importData.ImportDataFragment"
         android:label="@string/menu_import_data"
-        tools:layout="@layout/fragment_slideshow" />
+        tools:layout="@layout/fragment_slideshow">
+        <action
+            android:id="@+id/action_nav_import_data_to_loginFragment"
+            app:destination="@id/loginFragment"
+            app:popUpTo="@id/nav_import_data"
+            app:popUpToInclusive="true" />
+    </fragment>
 
     <fragment
         android:id="@+id/nav_notifications"
         android:name="com.example.proxiesr_rfr.ui.notif.NotificationFragment"
         android:label="@string/menu_notification"
-        tools:layout="@layout/fragment_notification" />
+        tools:layout="@layout/fragment_notification">
+        <action
+            android:id="@+id/action_nav_notifications_to_loginFragment"
+            app:destination="@id/loginFragment"
+            app:popUpTo="@id/nav_notifications"
+            app:popUpToInclusive="true" />
+    </fragment>
 </navigation>

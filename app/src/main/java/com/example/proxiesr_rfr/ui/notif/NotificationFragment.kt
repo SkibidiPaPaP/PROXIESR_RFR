@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.example.proxiesr_rfr.databinding.FragmentNotificationBinding
@@ -11,20 +12,23 @@ import com.example.proxiesr_rfr.databinding.FragmentNotificationBinding
 class NotificationFragment : Fragment() {
 
     private var _binding: FragmentNotificationBinding? = null
+
+    // This property is only valid between onCreateView and
+    // onDestroyView.
     private val binding get() = _binding!!
-    private lateinit var notificationViewModel: NotificationViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        notificationViewModel = ViewModelProvider(this)[NotificationViewModel::class.java]
+        val notificationViewModel =
+            ViewModelProvider(this).get(NotificationViewModel::class.java)
 
         _binding = FragmentNotificationBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
-        val textView = binding.textNotification
+        val textView: TextView = binding.textNotification
         notificationViewModel.text.observe(viewLifecycleOwner) {
             textView.text = it
         }
@@ -35,4 +39,4 @@ class NotificationFragment : Fragment() {
         super.onDestroyView()
         _binding = null
     }
-}
+} 
