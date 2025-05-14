@@ -19,9 +19,9 @@
 
     <fragment
         android:id="@+id/nav_data_insights"
-        android:name="com.example.proxiesr_rfr.ui.home.HomeFragment"
+        android:name="com.example.proxiesr_rfr.ui.trees.MapsFragment"
         android:label="@string/menu_data_insight"
-        tools:layout="@layout/fragment_home">
+        tools:layout="@layout/fragment_maps">
         <action
             android:id="@+id/action_nav_home_to_loginFragment"
             app:destination="@id/loginFragment"
@@ -31,13 +31,13 @@
 
     <fragment
         android:id="@+id/nav_tree_species"
-        android:name="com.example.proxiesr_rfr.ui.gallery.GalleryFragment"
+        android:name="com.example.proxiesr_rfr.ui.dataInsight.DataInsightFragment"
         android:label="@string/menu_tree_species"
         tools:layout="@layout/fragment_gallery" />
 
     <fragment
         android:id="@+id/nav_import_data"
-        android:name="com.example.proxiesr_rfr.ui.slideshow.SlideshowFragment"
+        android:name="com.example.proxiesr_rfr.ui.importData.ImportDataFragment"
         android:label="@string/menu_import_data"
         tools:layout="@layout/fragment_slideshow" />
 
