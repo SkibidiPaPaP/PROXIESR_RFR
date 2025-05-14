@@ -19,9 +19,9 @@
 
     <fragment
         android:id="@+id/nav_data_insights"
-        android:name="com.example.proxiesr_rfr.ui.trees.MapsFragment"
+        android:name="com.example.proxiesr_rfr.ui.trees.TreeSpeciesFragment"
         android:label="@string/menu_data_insight"
-        tools:layout="@layout/fragment_maps">
+        tools:layout="@layout/fragment_home">
         <action
             android:id="@+id/action_nav_home_to_loginFragment"
             app:destination="@id/loginFragment"

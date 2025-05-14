@@ -7,7 +7,7 @@
     <string name="nav_header_desc">Navigation header</string>
     <string name="action_settings">Settings</string>
     <string name="menu_notification">Notifications</string>
-    <string name="menu_data_insight">Map View</string>
+    <string name="menu_data_insight">Data Insight</string>
     <string name="menu_tree_species">Tree Species</string>
     <string name="menu_import_data">Import Data</string>
     <!-- TODO: Remove or change this placeholder text -->
