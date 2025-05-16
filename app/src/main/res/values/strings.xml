@@ -10,5 +10,8 @@
     <string name="menu_data_insight">Data Insight</string>
     <string name="menu_tree_species">Tree Species</string>
     <string name="menu_import_data">Import Data</string>
+    <string name="add_marker">Add Marker</string>
+    <string name="latitude_hint">Latitude (e.g., 40°26\'46"N or 40.446111)</string>
+    <string name="longitude_hint">Longitude (e.g., 79°58\'56"W or -79.982222)</string>
 
 </resources>

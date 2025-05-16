@@ -33,13 +33,14 @@
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Latitude">
+                android:hint="@string/latitude_hint" >
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/latitudeInput"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:inputType="numberDecimal|numberSigned" />
+                    android:inputType="text" />
+
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
@@ -48,13 +49,14 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
-                android:hint="Longitude">
+                android:hint="@string/longitude_hint">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/longitudeInput"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:inputType="numberDecimal|numberSigned" />
+                    android:inputType="text" />
+
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.button.MaterialButton
@@ -62,8 +64,11 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
-                android:text="Add Marker" />
+                android:text="@string/add_marker" />
+
+
         </LinearLayout>
+
     </androidx.cardview.widget.CardView>
 
 </androidx.constraintlayout.widget.ConstraintLayout> 

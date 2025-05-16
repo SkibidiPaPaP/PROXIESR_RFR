@@ -25,7 +25,7 @@ class TreeSpeciesFragment : Fragment() {
     // Rizal Park coordinates
     private val RIZAL_PARK_LAT = 14.5831
     private val RIZAL_PARK_LON = 120.9794
-    private val DEFAULT_ZOOM = 15.0
+    private val DEFAULT_ZOOM = 18.0
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -74,10 +74,53 @@ class TreeSpeciesFragment : Fragment() {
         addMarker(rizalPark, "Rizal Park")
     }
 
+    private fun convDMStoDD(degrees: Double, minutes: Double, seconds: Double, direction: Char): Double {
+        var dd = degrees + (minutes / 60.0) + (seconds / 3600.0)
+        if (direction == 'S' || direction == 'W' || direction == 's' || direction == 'w') {
+            dd = -dd
+        }
+        return dd
+    }
+
+    private fun parseDMSString(dmsStr: String): Double {
+        try {
+            // Remove all spaces and convert to uppercase for consistent parsing
+            val cleanStr = dmsStr.replace(" ", "").uppercase()
+            
+            // Extract direction (N, S, E, W)
+            val direction = cleanStr.last()
+            if (!listOf('N', 'S', 'E', 'W').contains(direction)) {
+                // If no direction found, treat as decimal degrees
+                return dmsStr.toDouble()
+            }
+
+            // Remove the direction character for further parsing
+            val numbers = cleanStr.substring(0, cleanStr.length - 1)
+            
+            // Split by degrees (°), minutes ('), and seconds (")
+            val parts = numbers.split("°", "'", "\"")
+            if (parts.size >= 3) {
+                val degrees = parts[0].toDouble()
+                val minutes = parts[1].toDouble()
+                val seconds = parts[2].toDouble()
+                return convDMStoDD(degrees, minutes, seconds, direction)
+            } else {
+                // If the format doesn't match DMS, try to parse as decimal degrees
+                return dmsStr.toDouble()
+            }
+        } catch (e: Exception) {
+            throw IllegalArgumentException("Invalid coordinate format. Use either DMS (e.g., 40°26'46\"N) or decimal degrees")
+        }
+    }
+
     private fun addMarkerFromInput() {
         try {
-            val latitude = binding.latitudeInput.text.toString().toDouble()
-            val longitude = binding.longitudeInput.text.toString().toDouble()
+            val latitudeStr = binding.latitudeInput.text.toString()
+            val longitudeStr = binding.longitudeInput.text.toString()
+
+            // Convert input strings to decimal degrees
+            val latitude = parseDMSString(latitudeStr)
+            val longitude = parseDMSString(longitudeStr)
 
             if (isValidLatLng(latitude, longitude)) {
                 val position = GeoPoint(latitude, longitude)
@@ -90,8 +133,10 @@ class TreeSpeciesFragment : Fragment() {
             } else {
                 showError("Invalid coordinates. Latitude must be between -90 and 90, and longitude between -180 and 180.")
             }
-        } catch (e: NumberFormatException) {
-            showError("Please enter valid numbers for latitude and longitude.")
+        } catch (e: IllegalArgumentException) {
+            showError(e.message ?: "Invalid coordinate format")
+        } catch (e: Exception) {
+            showError("Please enter valid coordinates")
         }
     }
 
